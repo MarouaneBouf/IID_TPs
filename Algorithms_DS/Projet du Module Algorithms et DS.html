@@ -1,0 +1,849 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Projet du Module Algorithms et DS.</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	text-indent: -1.7em;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-opaquegray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="81fa27c0-5043-432b-8bff-13f945660723" class="page sans"><header><img class="page-cover-image" src="https://www.notion.so/images/page-cover/met_winslow_homer_maine_coast.jpg" style="object-position:center 79.94%"/><h1 class="page-title">Projet du Module Algorithms et DS.</h1></header><div class="page-body"><figure class="block-color-red callout" style="white-space:pre-wrap;display:flex" id="f1d38c98-0c05-472e-bd27-b9ef40ed54ec"><div style="font-size:1.5em"><span class="icon">⌨️</span></div><div style="width:100%"><mark class="highlight-gray">Presenté par :  Marouane Boufarouj </mark></div></figure><h1 id="62c7483b-c98b-450a-96a5-86e2f1e948cb" class=""><mark class="highlight-yellow"><code>KARATSUBA</code></mark></h1><p id="fffe1d20-d79d-4226-b3e8-ad23b88ea378" class="">Objectif : Calcul d’un produit a*b tq la taille de a et b soit &gt; 1 (ou bien a≥10 et b≥10)</p><figure id="0e56d4d8-8e7b-4e97-b1de-4e912f4bec9c" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Karatsuba.png"><img style="width:1056px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Karatsuba.png"/></a></figure><hr id="52fc4442-d3ba-407e-81bd-c7cdb21356ef"/><h1 id="49b5630b-015e-457e-ae43-3923b0b678d8" class=""><code><mark class="highlight-yellow">SHAMOS</mark></code></h1><pre id="19457cee-5985-42c1-b611-a9823f77b09b" class="code code-wrap"><code>def devision(E) :
+n = len(E)
+E1,E2 = [],[]
+k=0
+while k &lt; n//2 :
+   E1.append(E[k])
+   k+=1
+while k &lt; n :
+   E2.append(E[k])
+   k += 1
+return E1,E2</code></pre><p id="0fd57b94-ba17-4574-9218-d973ab60b186" class="">La complexité de cet algorithme de cette fonction en big O notation est O(n).</p><p id="1815d682-2714-4e5a-8237-0eb513da74b0" class="">L&#x27;opération principale de ce code est la création des deux listes E1 et E2, qui sont toutes deux faites dans une boucle qui parcourt les éléments de la liste d&#x27;entrée E. La boucle s&#x27;exécute pour n/2 itérations dans le premier cas, et n/2 itérations dans le second cas, pour un total de n itérations. Par conséquent, la complexité de temps de ce code est O(n).</p><p id="d88a8c8c-b1f1-44ec-8808-d5e9b850cab0" class="">Il est important de noter que la complexité de temps de ce code pourrait être améliorée en utilisant une seule boucle pour créer à la fois E1 et E2, plutôt que deux boucles séparées. Cela réduirait la complexité de temps à O(n/2), ou O(n) en notation de big O. Cependant, cette optimisation n&#x27;aurait pas d&#x27;impact sur l&#x27;ordre de grandeur global de la complexité de temps.</p><hr id="e11fea9c-d500-4436-ac5a-a60f48fc0c99"/><h1 id="440a8b23-6eec-469b-92a1-279c1cdfdfb5" class=""><code><mark class="highlight-yellow">STRASSEN</mark></code></h1><ol type="1" id="5d76ceaf-7b4e-4a65-8523-9a1453bda19e" class="numbered-list" start="1"><li>L&#x27;algorithme de Strassen est une méthode pour multiplier des matrices de manière plus efficace que la méthode classique de multiplication de matrices.</li></ol><ol type="1" id="6d026f92-1bfe-4da7-b937-6585ee60cd1a" class="numbered-list" start="2"><li>Au lieu de multiplier chaque élément de l&#x27;une des matrices par chaque élément de l&#x27;autre matrice, l&#x27;algorithme de Strassen utilise des opérations de découpage, de sommation et de soustraction pour effectuer des multiplications partielles et obtenir le résultat final.</li></ol><ol type="1" id="2ff936b5-9500-4280-b911-5b4cedbe687b" class="numbered-list" start="3"><li>Cet algorithme est plus rapide que la méthode classique lorsque les matrices sont de grande taille, car il nécessite moins de multiplications.</li></ol><ol type="1" id="f880e177-7e34-4319-99d1-e61c7d1331c6" class="numbered-list" start="4"><li>Pour utiliser l&#x27;algorithme de Strassen, les matrices doivent être de taille 2^n x 2^n.</li></ol><ol type="1" id="0976735f-bbd2-4f69-b61e-5815d7fa89be" class="numbered-list" start="5"><li>Bien que l&#x27;algorithme de Strassen soit plus rapide que la méthode classique pour certaines tailles de matrices, il est plus compliqué à implémenter et peut nécessiter plus de mémoire.</li></ol><div id="85ec3eaf-a676-41b1-b16f-0902edf95bdd" class="column-list"><div id="fb8e6f5d-fed5-4a83-9f2b-c858cea24340" style="width:50%" class="column"><figure id="463ad038-df5c-4b37-bba8-ca9a905d1b48" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-22-2022_23.40_1.jpg"><img style="width:432px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-22-2022_23.40_1.jpg"/></a></figure><p id="72b94d29-8141-4861-bfed-17a3431bdfeb" class="">
+</p></div><div id="b0c7758e-9d60-4c91-921c-9a0d49326359" style="width:50%" class="column"><figure id="29453934-35f9-4884-90db-cafa0b1235c4" class="image" style="text-align:left"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-22-2022_23.40_2.jpg"><img style="width:384px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-22-2022_23.40_2.jpg"/></a></figure></div></div><h1 id="5d991586-088e-4f10-9bb4-67847e69a342" class=""><code><mark class="highlight-yellow">QUICKHULL</mark></code></h1><div id="b370eb49-1a29-4d7f-adef-9dc73555465e" class="column-list"><div id="2d13df88-8ff1-45ea-a701-2af46497f9e4" style="width:68.75%" class="column"><figure id="8c17e4e0-ffd2-4412-92b0-7b55ab19ea04" class="image" style="text-align:left"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/1.jpg"><img style="width:528px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/1.jpg"/></a></figure></div><div id="804f45dc-8093-4400-b58a-2cd542acfde6" style="width:31.249999999999993%" class="column"><figure id="cfb47b3e-5872-4041-bb7e-35c49a6f1f97" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/2.jpg"><img style="width:336px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/2.jpg"/></a></figure></div></div><hr id="1d5f66c5-96bc-4788-ba1b-e09631041ea0"/><h1 id="5847704f-4fd7-41b9-ba99-7f334a3c711d" class=""><code><mark class="highlight-yellow">RECHERCHE DICHOTOMIQUE </mark></code></h1><p id="203c98d3-1d89-461d-8520-7780c1a8d47d" class="">Ecrivons la fonction racine carré en utlisant la recherche dichotomique et sans utilisation de bibliothéques externes! </p><pre id="cc607832-1a4f-47ea-8da6-e4fad2ca3f41" class="code code-wrap"><code>def squareRoot(number, precision):
+
+	start = 0
+	end, ans = number, 1
+
+	while (start &lt;= end):
+		mid = int((start + end) / 2)
+
+		if mid**2 == number:
+			ans = mid
+			break
+
+		if mid**2 &lt; number:
+			start = mid + 1
+			ans = mid
+
+		else:
+			end = mid - 1
+
+	increment = 0.1
+	for _ in range(precision):
+		while (ans * ans &lt;= number):
+			ans += increment
+   
+		ans = ans - increment
+		increment = increment / 10
+
+	return ans</code></pre><h1 id="5cea5d98-7660-4bb1-9a0e-9a808a8bd6ce" class=""><code><mark class="highlight-yellow">RECHERCHE SEQUENTIELLE </mark></code></h1><pre id="7b36f9de-355a-43b5-9105-1761131e1cb2" class="code code-wrap"><code>#include &lt;iostream&gt;
+
+struct Node {
+  int data;
+  Node* next;
+};
+
+// Fonction de recherche d&#x27;une valeur donnée dans la liste chaînée circulaire
+bool search(Node* head, int value) {
+  Node* curr = head;  // Initialiser le noeud courant à la tête
+
+  // Vérifier si la liste est vide
+  if (curr == nullptr) {
+    std::cout &lt;&lt; &quot;La liste est vide&quot; &lt;&lt; std::endl;
+    return false;
+  }
+
+  // Vérifier si la valeur se trouve dans le premier noeud
+  if (curr-&gt;data == value) {
+    return true;
+  }
+
+  // Parcourir la liste jusqu&#x27;à trouver la valeur ou atteindre le noeud de départ à nouveau
+  curr = curr-&gt;next;
+  while (curr != head) {
+    if (curr-&gt;data == value) {
+      return true;
+    }
+    curr = curr-&gt;next;
+  }
+
+  // Si la valeur n&#x27;a pas été trouvée, renvoyer false
+  return false;
+}
+
+int main() {
+  // Créer une liste chaînée circulaire avec 3 noeuds
+  Node* head = new Node{1, nullptr};
+  Node* second = new Node{2, nullptr};
+  Node* third = new Node{3, nullptr};
+
+  head-&gt;next = second;
+  second-&gt;next = third;
+  third-&gt;next = head;
+
+  // Rechercher la valeur 2
+  bool result = search(head, 2);
+  std::cout &lt;&lt; &quot;Résultat : &quot; &lt;&lt; result &lt;&lt; std::endl;  // Sortie : true
+
+  // Rechercher la valeur 4
+  result = search(head, 4);
+  std::cout &lt;&lt; &quot;Résultat : &quot; &lt;&lt; result &lt;&lt; std::endl;  // Sortie : false
+
+  return 0;
+}</code></pre><h1 id="8a2821f7-c5af-4ae5-b46c-a9ca37360ae3" class=""><code><mark class="highlight-yellow">Sac à dos</mark></code></h1><pre id="1c5fb565-b832-4f07-94d8-2e4ceb235862" class="code code-wrap"><code>import itertools
+def sacADos_dynamique(capacite, elements):
+    # Initialiser la matrice à 0
+    matrice = [[0 for _ in range(capacite + 1)] for _ in range(len(elements) + 1)]
+
+    # Remplir la matrice avec la méthode de programmation dynamique
+    for i, w in itertools.product(range(1, len(elements) + 1), range(1, capacite + 1)):
+        matrice[i][w] = (
+            max(
+                elements[i - 1][2] + matrice[i - 1][w - elements[i - 1][1]],
+                matrice[i - 1][w],
+            )
+            if elements[i - 1][1] &lt;= w
+            else matrice[i - 1][w]
+        )
+    # Récupérer les éléments en fonction de la somme
+    w = capacite
+    n = len(elements)
+    elements_selection = []
+
+    while w &gt;= 0 and n &gt;= 0:
+        e = elements[n-1]
+        if matrice[n][w] == matrice[n-1][w-e[1]] + e[2]:
+            # Ajouter l&#x27;élément courant à la liste des éléments sélectionnés
+            elements_selection.append(e)
+            w -= e[1]
+        n -= 1
+        
+    # Renvoyer la valeur maximale et la liste des éléments sélectionnés
+    return matrice[-1][-1], elements_selection
+
+# Exemple d&#x27;utilisation
+ele = [(&#x27;obj1&#x27;, 2, 6),  (&#x27;obj2&#x27;, 3, 10),  (&#x27;obj3&#x27;, 4, 12)]
+print(&#x27;Algo dynamique&#x27;, sacADos_dynamique(5, ele))</code></pre><hr id="48ecdff7-b660-42a9-8610-4d800159d3a8"/><h1 id="b3a07236-de8b-4b32-9869-24362cd0a767" class=""><code><mark class="highlight-yellow">Tri à Bulles / Tri par Fusion</mark></code></h1><p id="f4378c89-286c-4f9b-8a56-7a2dbf5fdf5d" class="">—&gt; Trouvons la plus petite somme de ai+aj tq 0≤i&lt;j≤taille-1 de L = [5, 3, 1, 4, 0]</p><figure id="fdae6967-2a8b-4930-acbf-c485f155b2b3" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Merge_Sort.png"><img style="width:816px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Merge_Sort.png"/></a></figure><h1 id="94bbf232-65ef-4543-ad72-7533378142eb" class=""><code><mark class="highlight-yellow">Tri par selection et insertion</mark></code></h1><p id="2955227b-16ee-4e05-9cdf-d72a53cd986a" class="">La fonction <code><strong>tri_insertion(A)</strong></code> prend en entrée une liste <code><strong>A</strong></code> et effectue un tri par insertion de cette liste de manière récursive.</p><p id="f39d2d32-c134-4392-bbc7-89ff8fa12995" class="">La fonction commence par vérifier si la liste <code><strong>A</strong></code> est vide ou ne contient qu&#x27;un élément. Si c&#x27;est le cas, la liste est déjà triée et la fonction retourne simplement la liste telle quelle.</p><p id="23eb9746-79d5-4ad9-9ebf-8e21974b7715" class="">Sinon, la fonction stocke le premier élément de la liste dans la variable <code><strong>valeur</strong></code> et crée une nouvelle liste <code><strong>reste</strong></code> avec les éléments restants. Elle appelle récursivement la fonction <code><strong>tri_insertion()</strong></code> sur la liste <code><strong>reste</strong></code> pour la trier, et stocke le résultat dans la variable <code><strong>reste_trié</strong></code>.</p><p id="67df287c-221d-47bd-8b6e-25dfe0cad35e" class="">Ensuite, la fonction construit et retourne une nouvelle liste qui contient d&#x27;abord tous les éléments de <code><strong>reste_trié</strong></code> qui sont plus petits que <code><strong>valeur</strong></code>, puis <code><strong>valeur</strong></code> lui-même, et enfin tous les éléments de <code><strong>reste_trié</strong></code> qui sont plus grands ou égaux à <code><strong>valeur</strong></code>. Cette nouvelle liste est construite à l&#x27;aide de deux list comprehensions.</p><p id="73a94e0b-04bc-45a5-8a03-e2e51d38f534" class="">En résumé, la fonction <code><strong>tri_insertion()</strong></code> effectue un tri par insertion de la liste <code><strong>A</strong></code> de manière récursive en divisant la liste en deux parties : le premier élément et les éléments restants, et en insérant le premier élément à sa place finale dans la liste triée des éléments restants.</p><pre id="d56455f7-4fbb-454f-a1b9-42fb6c446836" class="code code-wrap"><code>def tri_insertion(A):
+    if len(A) &lt;= 1: return A
+    valeur = A[0]
+    reste = A[1:]
+    reste_trié = tri_insertion(reste)
+    return [e for e in reste_trié if e &lt; valeur] + [valeur] + [e for e in reste_trié if e &gt;= valeur]</code></pre><h1 id="dc6b7a65-c944-4178-ab68-1ef5387eed09" class=""><code><mark class="highlight-yellow">Coefficient Binomial</mark></code></h1><p id="71fe667a-72c6-4abb-af35-38175c3cba5e" class=""><strong>Q1 :</strong> Pour écrire la fonction <code><strong>fact(p)</strong></code> qui calcule la factorielle d&#x27;un entier positif <code><strong>p</strong></code>, on peut utiliser une approche récursive comme ceci :</p><pre id="2667533e-a7e2-4c32-acf1-b89d62e4ec7a" class="code code-wrap"><code>// Fonction qui calcule la factorielle d&#x27;un entier positif
+int fact(int p) {
+    // Si p est 0 ou 1, la factorielle est 1
+    if (p &lt;= 1) {
+        return 1;
+    }
+    // Sinon, la factorielle est p multipliée par la factorielle de p - 1
+    else {
+        return p * fact(p - 1);
+    }
+}
+
+</code></pre><p id="0de3580a-0502-4f89-a597-252fd3533232" class="">Cette fonction utilise un appel récursif pour calculer la factorielle de <code><strong>p</strong></code>. Si <code><strong>p</strong></code> est 0 ou 1, la factorielle est 1. Sinon, la factorielle est calculée en multipliant <code><strong>p</strong></code> par la factorielle de <code><strong>p - 1</strong></code>. La fonction s&#x27;appelle elle-même récursivement jusqu&#x27;à atteindre la base de cas où <code><strong>p</strong></code> est 0 ou 1, puis retourne le résultat du calcul.</p><p id="3485920e-2310-481b-b7de-2d24a3afda09" class=""><strong>Q2 :</strong> Pour écrire la fonction <code><strong>produit(n, k)</strong></code> qui calcule le produit des <code><strong>k</strong></code> premiers entiers inférieurs à <code><strong>n</strong></code>, on peut utiliser une approche récursive comme ceci :</p><pre id="d874bf0c-807f-431b-b843-f10d9590b477" class="code code-wrap"><code>// Fonction qui calcule le produit des k premiers entiers inférieurs à n
+int produit(int n, int k) {
+    // Si k est égal à 1, le produit est n
+    if (k == 1) {
+        return n;
+    }
+    // Sinon, le produit est n multiplié par le produit des k - 1 premiers entiers inférieurs à n - 1
+    else {
+        return n * produit(n - 1, k - 1);
+    }
+}</code></pre><p id="2974b670-d8a4-472c-a0a3-6bc0b9e5826b" class=""><strong>Q3 :</strong> Pour écrire la fonction <code><strong>binomial(n, k)</strong></code> qui calcule le coefficient binomial <code><strong>(n, k)</strong></code>, on peut utiliser la formule suivante :</p><pre id="8dd46c6d-beb1-4f4e-bfa7-168fa545d185" class="code code-wrap"><code>Copy code
+(n, k) = n! / (k! * (n - k)!)
+
+</code></pre><p id="30fc2b2d-8826-4f99-aaa0-13a9c1e7f7df" class="">On peut donc écrire la fonction de cette façon :</p><pre id="cadfea9a-c7cc-4563-96f2-f6a1ec055804" class="code code-wrap"><code>// Fonction qui calcule le coefficient binomial (n, k)
+int binomial(int n, int k) {
+    return fact(n) / (fact(k) * fact(n - k));
+}</code></pre><p id="639e63fe-dd04-4b16-9fb8-0fa46863a23d" class="">Notez que la fonction <code><strong>fact(p)</strong></code> qui calcule la factorielle d&#x27;un entier positif <code><strong>p</strong></code> a été définie précédemment.</p><p id="1833f2a7-1bc3-43ae-9661-a6a9def615e5" class=""><strong>Q4 :</strong> Pour écrire la fonction <code><strong>liste_binomiaux(n)</strong></code> qui retourne une liste des coefficients binomiaux <code><strong>(n, k)</strong></code> pour tous les entiers positifs <code><strong>k</strong></code> allant de 0 à <code><strong>n</strong></code>, on peut utiliser une boucle <code><strong>for</strong></code> comme ceci :</p><pre id="e2746aa2-02e8-4cd0-8867-376d8726535d" class="code code-wrap"><code>// Fonction qui retourne une liste des coefficients binomiaux (n, k) pour k = 0, 1, 2, ..., n
+int* liste_binomiaux(int n) {
+    // Allouer de l&#x27;espace mémoire pour la liste
+    int* liste = malloc((n + 1) * sizeof(int));
+
+    // Calculer et stocker chaque coefficient binomial dans la liste
+    for (int k = 0; k &lt;= n; k++) {
+        liste[k] = binomial(n, k);</code></pre><h1 id="336438d4-fddf-47d0-964a-b4fd342605fe" class=""><code><mark class="highlight-yellow">BACKTRACKING</mark></code></h1><p id="4d86d097-2338-4e65-91cc-ad9a663eff58" class="">Objectif : Prendre la bonne decision</p><figure id="8eaedf1c-7071-4d34-834b-aba5775c21e7" class="image" style="text-align:left"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Untitled.png"><img style="width:672px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Untitled.png"/></a><figcaption>Exercice de BackTracking</figcaption></figure><table id="12709992-09e1-4b90-89a1-6620d8259794" class="simple-table"><thead class="simple-table-header"><tr id="2d61ed0c-d2d4-4f81-9ec5-fa6f334cfacd"><th id="r{Z`" class="block-color-purple_background simple-table-header" style="width:139.6px">V1</th><th id="|`^~" class="block-color-purple_background simple-table-header" style="width:139.6px">V2</th><th id="Pgys" class="block-color-purple_background simple-table-header" style="width:139.6px">V3</th><th id="~x@`" class="block-color-purple_background simple-table-header" style="width:139.6px">V4</th><th id="VYaS" class="block-color-purple_background simple-table-header" style="width:139.6px">CONDITION D’ADJACENCE</th></tr></thead><tbody><tr id="b4c2c81b-17d7-49fe-8a2b-07558f5cb947"><td id="r{Z`" class="" style="width:139.6px">{R , V}</td><td id="|`^~" class="" style="width:139.6px">{B , V}</td><td id="Pgys" class="" style="width:139.6px">{B , V}</td><td id="~x@`" class="" style="width:139.6px">{V}</td><td id="VYaS" class="" style="width:139.6px"></td></tr><tr id="317e40d6-26cc-4329-8284-7eedf0868b72"><td id="r{Z`" class="" style="width:139.6px">{ R }</td><td id="|`^~" class="" style="width:139.6px">{B, V}</td><td id="Pgys" class="" style="width:139.6px">{B, V}</td><td id="~x@`" class="" style="width:139.6px">{V}</td><td id="VYaS" class="" style="width:139.6px">V1 ET V4</td></tr><tr id="5e9af69b-0691-49af-bec1-75b94165cfb6"><td id="r{Z`" class="" style="width:139.6px">{R}</td><td id="|`^~" class="" style="width:139.6px">{B, V}</td><td id="Pgys" class="" style="width:139.6px">{B}</td><td id="~x@`" class="" style="width:139.6px">{V}</td><td id="VYaS" class="" style="width:139.6px">V3 ET V4</td></tr><tr id="263d9962-7181-414c-8f00-90f85ae2c31e"><td id="r{Z`" class="" style="width:139.6px">{R}</td><td id="|`^~" class="" style="width:139.6px">{V}</td><td id="Pgys" class="" style="width:139.6px">{B}</td><td id="~x@`" class="" style="width:139.6px">{V}</td><td id="VYaS" class="" style="width:139.6px">V2 ET V3</td></tr></tbody></table><h1 id="c46d7b1b-c1ca-4941-9f60-2b28911ae290" class=""><code><mark class="highlight-yellow">Tri par Tas / Rapide</mark></code></h1><ul id="16d11826-9d76-4d1f-801d-b00e1c431967" class="bulleted-list"><li style="list-style-type:disc">Construire un tas à partir du tableau de données en utilisant l&#x27;algorithme 
+&quot;flotter vers le haut&quot; (heapify).</li></ul><div id="b7ec7d0c-2fee-441a-b01f-c2c0b5a994e0" class="column-list"><div id="0d036ff8-f3e4-47ec-977f-c17ea65bb410" style="width:50.000000000000014%" class="column"><ul id="f4d691fe-1732-4f5a-8bc1-d0b9b2b4347a" class="bulleted-list"><li style="list-style-type:disc">Répéter l&#x27;opération suivante jusqu&#x27;à ce que le tas ne contienne plus qu&#x27;un seul élément:
+a. Échanger la racine du tas (l&#x27;élément le plus grand ou le plus petit) avec le dernier élément du tableau.
+b. Réduire la taille du tas en ne considérant que les n premiers éléments du tableau, où n est la taille du tas avant l&#x27;échange de l&#x27;étape précédente.
+c. Réorganiser le tas en utilisant l&#x27;algorithme &quot;flotter vers le bas&quot; (sink down).</li></ul><figure id="d2d3e741-5acc-4cb0-b48a-7bcae54e24da" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-25-2022_13.50_2.jpg"><img style="width:2088px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-25-2022_13.50_2.jpg"/></a></figure><figure id="c79b5f06-05f7-441d-b556-f4ca7f10e17b" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-25-2022_13.50_3.jpg"><img style="width:2584px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-25-2022_13.50_3.jpg"/></a></figure></div><div id="0bde190b-647e-4c49-a305-d3f379f4ba9c" style="width:50%" class="column"><figure id="3eb84f0e-f779-4b0d-a8c7-e5585f1273e3" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-25-2022_13.50_1.jpg"><img style="width:2173px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/CamScanner_12-25-2022_13.50_1.jpg"/></a><figcaption>Camscanner laisse des taches au niveau de la feuille</figcaption></figure><p id="c79a1d97-94f1-4c8b-bd28-123a42af78e6" class="">Notons que les changements au niveau du tableau se font parallélement avec les changements de l’arbre binaire complete.</p><h3 id="50f6c579-904f-4ee7-a2c1-07eb73a33848" class=""><strong>L = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]</strong></h3><p id="913aebb2-82c0-490b-a359-09ea5a9c3978" class="">time complexity of Heapsort is: <strong><em>O(n log n)</em></strong></p><p id="847c38e5-a98c-4c32-a798-e35e0c6d6f75" class="">
+</p></div></div><h1 id="f104b2e1-9cab-44cf-ae7c-1acdf5d903da" class=""><code><mark class="highlight-yellow">Fibonacci</mark></code></h1><pre id="048aea1c-fc6a-4eb9-bdca-24b55c1bae30" class="code code-wrap"><code>def fibonacci(n):
+  if n == 0:
+    return 0
+  elif n == 1:
+    return 1
+  else:
+    return fibonacci(n-1) + fibonacci(n-2)</code></pre><h1 id="7e2a0b25-7cd9-4fda-87be-10e5250c09a4" class=""><code><mark class="highlight-yellow">Algorithme de Kruskal</mark></code></h1><figure id="d31792d4-dd93-4e0f-a650-759b179d9e9c" class="image" style="text-align:center"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/10.jpg"><img style="width:576px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/10.jpg"/></a></figure><h1 id="f1685481-cf56-4eb4-a986-caee7d1df84a" class=""><code><mark class="highlight-yellow">Algorithme de Prime</mark></code></h1><figure id="9eed8d68-1da1-415f-9830-6c55d57530e3" class="image" style="text-align:center"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Prime.png"><img style="width:576px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Prime.png"/></a></figure><h1 id="0be938af-66a8-4244-957c-295b9d736874" class=""><code><mark class="highlight-yellow">BRANCH AND BOUND</mark></code></h1><figure id="14632425-370d-457f-866d-dc10dcf4a0bf" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Untitled%201.png"><img style="width:1187px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Untitled%201.png"/></a></figure><p id="793c75fb-1041-469a-a2b4-6048bfa35cc2" class="">UB = Upper Bound ; LB = Lower Bound</p><p id="5e526ab2-0dfc-447e-b607-b9dfcbe579e6" class="">Le but est de maximiser z = 100*a + 150*b tq:
+<code><mark class="highlight-purple">8000*a + 4000*b ≤ 40000$</mark></code><mark class="highlight-purple"> et </mark><code><mark class="highlight-purple">15*a + 30*b ≤ 200</mark></code><mark class="highlight-purple"><strong> </strong></mark><mark class="highlight-purple">et</mark><mark class="highlight-purple"><strong> </strong></mark><code><mark class="highlight-purple">a,b sont des entiers</mark></code><mark class="highlight-purple"><strong>.</strong></mark></p><p id="e1741c84-8b8b-469b-b66f-1e6d879f254b" class="">Etapes à suivre : </p><ol type="1" id="ff235dda-4a90-4305-b660-7910f83a93d1" class="numbered-list" start="1"><li>Trouver la solution optimale sans candition sur la nature de a et b.
+c-à-d a et b ne sont pas forcément des entiers.</li></ol><ol type="1" id="e8ac4014-e566-42eb-a086-371d584671ac" class="numbered-list" start="2"><li>au nœud 1, que la solution détendue soit la borne supérieure et que la solution entière arrondie soit la borne inférieure</li></ol><ol type="1" id="9d1ccfb7-eae9-43c9-aedd-f4bbad65fa63" class="numbered-list" start="3"><li>sélectionnez la variable avec la plus grande partie fractionnée pour la ramification. Créez deux nouvelles contraintes pour cette variable reflétant les valeurs entières partitionnées. Le résultat sera une nouvelle contrainte ≤ et une nouvelle contrainte ≥.</li></ol><ol type="1" id="f5da11b9-f491-4687-a13c-538eb3bb8dc9" class="numbered-list" start="4"><li>Création de deux noeuds, une pour la contrainte ≤ et une pour la contrainte ≥.</li></ol><ol type="1" id="100c93e7-e289-473d-9034-8946930c954a" class="numbered-list" start="5"><li>résoudre le modèle de programmation linéaire détendu avec la nouvelle contrainte ajoutée à chacun de ces nœuds.</li></ol><ol type="1" id="bdda9485-963a-4c08-b954-309b21eb10cc" class="numbered-list" start="6"><li>La solution détendue est la borne supérieure à chaque nœud, et la solution entière maximale existante (à n&#x27;importe quel nœud) est la borne inférieure.</li></ol><ol type="1" id="444a69bc-050a-4ade-9fed-d7f3a1cae7bc" class="numbered-list" start="7"><li>si le processus produit une solution entière réalisable avec la plus grande valeur de borne supérieure de n’importe quel nœud de terminaison, la solution entière optimale a été atteinte. Si une solution entière réalisable n&#x27;apparaît pas, dérivez du nœud avec la plus grande borne supérieure.</li></ol><ol type="1" id="ddd3fae8-a535-4480-9e7c-7e8d9c634f6d" class="numbered-list" start="8"><li>return étape 3</li></ol><figure id="f66c2f8a-79f2-4f10-9af7-6893d9828bad" class="image"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Branch_and_bound.png"><img style="width:5513px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/Branch_and_bound.png"/></a></figure><hr id="d722e159-3a33-4e02-b221-ddd64ba45cab"/><h1 id="4c639e4b-1aa4-4a6f-9d0b-223f9fe1842a" class=""><code><mark class="highlight-yellow">Algorithme de Djikstra</mark></code></h1><figure id="b1625e80-22de-4207-9d30-8100c2eeb5fe" class="image" style="text-align:left"><a href="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/djikstra.png"><img style="width:480px" src="Projet%20du%20Module%20Algorithms%20et%20DS%2081fa27c05043432b8bff13f945660723/djikstra.png"/></a></figure><hr id="becd3638-055f-48e9-aee7-ce21cf0873b1"/><p id="627c0ebd-e677-4761-b7d8-61f1430bf41e" class="">
+</p><blockquote id="8d82ce9c-27ea-481b-be01-1baee7628d0b" class="">En conclusion, les algorithmes et les structures de données jouent un rôle crucial dans la façon dont nous traitons et utilisons les données. Ils nous permettent de résoudre des problèmes complexes de manière efficace et rapide, et sont utilisés dans de nombreux domaines tels que l&#x27;analyse de données, l&#x27;apprentissage automatique et la gestion de bases de données. Il est important de comprendre comment différents algorithmes et structures de données fonctionnent afin de pouvoir choisir les plus adaptés à chaque situation. En fin de compte, l&#x27;utilisation judicieuse de ces outils peut avoir un impact significatif sur la qualité et la vitesse de nos traitements de données.</blockquote><figure class="block-color-red callout" style="white-space:pre-wrap;display:flex" id="6713acdb-6016-45fe-8648-f378950197d4"><div style="font-size:1.5em"><span class="icon">🏫</span></div><div style="width:100%"><mark class="highlight-gray">IID CLASS / 2022 - 27 - 12 </mark></div></figure><p id="75da5810-4b9c-4290-af2f-cb54837b7b94" class="">
+</p></div></article></body></html>
